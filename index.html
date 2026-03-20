@@ -1,0 +1,2446 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restauracja Starka - Rodzinna Tradycja od 1999 | Opole</title>
+    <meta name="description" content="Restauracja Starka - rodzinna restauracja w zabytkowej kamienicy nad Odr&#261; w Opolu. Kuchnia polska i europejska, taras nad rzek&#261;, sala bankietowa. Od 1999 roku.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ======================================
+           CSS VARIABLES - VINTAGE PALETTE
+           ====================================== */
+        @font-face {
+            font-family: 'Old English Five';
+            src: url('fonts/OldEnglishFive.woff2') format('woff2'),
+                 url('fonts/OldEnglishFive.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --brown-dark: #3B1F0B;
+            --brown: #623304;
+            --brown-medium: #7A4A1E;
+            --brown-light: #A67C52;
+            --gold: #C9A96E;
+            --gold-light: #D4BA8A;
+            --cream: #F5F0E8;
+            --cream-dark: #E8DFD0;
+            --white: #FDFCFA;
+            --text: #2C1810;
+            --text-light: #5C4A3A;
+            --text-muted: #8B7B6B;
+            --overlay: rgba(59, 31, 11, 0.6);
+            --font-heading: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+            --font-body: 'Raleway', 'Segoe UI', Arial, sans-serif;
+        }
+
+        /* ======================================
+           RESET & BASE
+           ====================================== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            font-weight: 300;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: var(--brown); text-decoration: none; transition: color 0.3s; }
+        a:hover { color: var(--gold); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ======================================
+           HEADER / NAV
+           ====================================== */
+        .site-header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(59, 31, 11, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+            transition: background 0.4s;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            font-family: 'Old English Five', var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-transform: none;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .logo span { display: none; }
+
+        .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+        .nav-links a {
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            color: var(--cream);
+            position: relative;
+            padding: 4px 0;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .mobile-toggle {
+            display: none;
+            background: none; border: none;
+            cursor: pointer; padding: 8px;
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 24px; height: 2px;
+            background: var(--gold);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* ======================================
+           HERO
+           ====================================== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-slider {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-slide.active { opacity: 1; }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(59, 31, 11, 0.6) 0%,
+                rgba(59, 31, 11, 0.45) 40%,
+                rgba(59, 31, 11, 0.75) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--cream);
+            padding: 0 24px;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 0 auto 36px;
+        }
+
+        /* Hero scroll hint */
+        .hero-scroll-hint {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .hero-scroll-hint:hover { opacity: 1; }
+
+        .hero-scroll-line {
+            display: block;
+            width: 24px;
+            height: 40px;
+            border: 1.5px solid var(--gold);
+            border-radius: 12px;
+            position: relative;
+        }
+        .hero-scroll-line::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 8px;
+            border-radius: 2px;
+            background: var(--gold);
+            animation: scrollDot 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollDot {
+            0% { top: 6px; opacity: 1; }
+            50% { top: 24px; opacity: 0.2; }
+            100% { top: 6px; opacity: 1; }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+        .btn:hover {
+            background: var(--gold);
+            color: var(--brown-dark);
+        }
+        .btn-filled {
+            background: var(--gold);
+            color: var(--brown-dark);
+        }
+        .btn-filled:hover {
+            background: var(--gold-light);
+            color: var(--brown-dark);
+        }
+
+        /* ======================================
+           SECTIONS - COMMON
+           ====================================== */
+        section { padding: 100px 0; }
+
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            color: var(--brown-dark);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-divider {
+            width: 50px;
+            height: 1px;
+            background: var(--gold);
+            margin-bottom: 24px;
+        }
+
+        .section-text {
+            font-size: 1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            line-height: 1.8;
+        }
+
+        /* ======================================
+           O RESTAURACJI
+           ====================================== */
+        .about { background: var(--white); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image {
+            position: relative;
+            overflow: hidden;
+        }
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 20px; left: 20px;
+            right: -20px; bottom: -20px;
+            border: 1px solid var(--gold);
+            z-index: -1;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .feature {
+            padding: 16px 0;
+            border-top: 1px solid var(--cream-dark);
+        }
+        .feature-title {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--brown);
+            margin-bottom: 4px;
+        }
+        .feature-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ======================================
+           SALE / WNETRZA
+           ====================================== */
+        .spaces { background: var(--cream); }
+        .spaces-header { text-align: center; margin-bottom: 60px; }
+        .spaces-header .section-divider { margin: 0 auto 24px; }
+        .spaces-header .section-text { margin: 0 auto; }
+
+        .spaces-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .space-card {
+            background: var(--white);
+            overflow: hidden;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .space-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(59, 31, 11, 0.1);
+        }
+
+        .space-card-img {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+        .space-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        .space-card:hover .space-card-img img { transform: scale(1.05); }
+
+        .space-card-badge {
+            position: absolute;
+            bottom: 16px; right: 16px;
+            background: var(--brown-dark);
+            color: var(--gold);
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            padding: 8px 16px;
+        }
+
+        .space-card-body { padding: 28px; }
+        .space-card-name {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--brown-dark);
+            margin-bottom: 8px;
+        }
+        .space-card-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .space-card-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .space-card-amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .amenity-tag {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border: 1px solid var(--brown-light);
+            color: var(--brown-medium);
+            background: rgba(166, 124, 82, 0.06);
+        }
+
+        /* ======================================
+           MENU
+           ====================================== */
+        .menu-section { background: var(--white); }
+        .menu-header { text-align: center; margin-bottom: 60px; }
+        .menu-header .section-divider { margin: 0 auto 24px; }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+        .menu-cat-btn {
+            padding: 10px 24px;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: 1px solid var(--cream-dark);
+            background: transparent;
+            color: var(--text-muted);
+            transition: all 0.3s;
+        }
+        .menu-cat-btn:hover,
+        .menu-cat-btn.active {
+            border-color: var(--gold);
+            color: var(--brown-dark);
+            background: var(--cream);
+        }
+
+        .menu-category { display: none; }
+        .menu-category.active { display: block; }
+
+        .menu-items {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--cream-dark);
+            gap: 24px;
+        }
+        .menu-item-info { flex: 1; }
+        .menu-item-name {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--brown-dark);
+            margin-bottom: 4px;
+        }
+        .menu-item-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .menu-item-price {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--brown);
+            white-space: nowrap;
+        }
+
+        .menu-note {
+            max-width: 800px;
+            margin: 32px auto 0;
+            padding: 24px;
+            background: var(--cream);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* ======================================
+           GODZINY OTWARCIA
+           ====================================== */
+        .hours-section {
+            background: var(--brown-dark);
+            color: var(--cream);
+            padding: 80px 0;
+        }
+        .hours-section .section-label { color: var(--gold-light); }
+        .hours-section .section-title { color: var(--cream); }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 48px;
+            align-items: center;
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .hours-table td {
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+            font-size: 0.95rem;
+        }
+        .hours-table td:first-child {
+            color: var(--gold-light);
+            font-weight: 400;
+        }
+        .hours-table td:last-child {
+            text-align: right;
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--cream);
+        }
+
+        .hours-image {
+            position: relative;
+            overflow: hidden;
+        }
+        .hours-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border: 1px solid rgba(201, 169, 110, 0.3);
+        }
+
+        .hours-note {
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            opacity: 0.7;
+            margin-top: 20px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* ======================================
+           REZERWACJA
+           ====================================== */
+        .reservation {
+            background: var(--cream);
+        }
+        .reservation-inner {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .reservation .section-divider { margin: 0 auto 24px; }
+
+        .reservation-phone {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--brown);
+            margin: 32px 0 12px;
+        }
+        .reservation-phone a {
+            color: var(--brown);
+            transition: color 0.3s;
+        }
+        .reservation-phone a:hover { color: var(--gold); }
+
+        .reservation-note {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        /* ======================================
+           KONTAKT
+           ====================================== */
+        .contact { background: var(--white); }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-item { margin-bottom: 28px; }
+        .contact-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--brown);
+            margin-bottom: 6px;
+        }
+        .contact-value {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--brown-dark);
+        }
+
+        .contact-map {
+            width: 100%;
+            height: 400px;
+            border: none;
+            filter: sepia(20%) saturate(80%);
+        }
+
+        /* ======================================
+           POLITYKA PRYWATNOSCI
+           ====================================== */
+        .privacy { background: var(--white); padding: 120px 0 80px; }
+        .privacy h1 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: var(--brown-dark);
+            margin-bottom: 40px;
+        }
+        .privacy h2 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--brown);
+            margin: 32px 0 12px;
+        }
+        .privacy p, .privacy li {
+            font-size: 0.92rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        .privacy ul { padding-left: 20px; }
+
+        /* ======================================
+           COOKIE BANNER - RODO COMPLIANT
+           ====================================== */
+        .cookie-banner {
+            display: none;
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            z-index: 9999;
+            background: var(--brown-dark);
+            color: var(--cream);
+            border-top: 1px solid var(--gold);
+            padding: 24px;
+        }
+        .cookie-banner.visible { display: block; }
+
+        .cookie-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .cookie-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .cookie-text {
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            opacity: 0.85;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .cookie-text a { color: var(--gold); text-decoration: underline; }
+
+        .cookie-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .cookie-cat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            color: var(--cream);
+        }
+        .cookie-cat input[type="checkbox"] { accent-color: var(--gold); }
+        .cookie-cat .required {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .cookie-btn {
+            padding: 10px 24px;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: 1px solid var(--gold);
+            transition: all 0.3s;
+        }
+        .cookie-btn-accept {
+            background: var(--gold);
+            color: var(--brown-dark);
+        }
+        .cookie-btn-accept:hover { background: var(--gold-light); }
+        .cookie-btn-reject {
+            background: transparent;
+            color: var(--gold);
+        }
+        .cookie-btn-reject:hover { background: rgba(201, 169, 110, 0.1); }
+        .cookie-btn-settings {
+            background: transparent;
+            color: var(--gold-light);
+            border-color: rgba(201, 169, 110, 0.4);
+        }
+        .cookie-btn-settings:hover { border-color: var(--gold); }
+
+        .cookie-settings-btn {
+            position: fixed;
+            bottom: 20px; left: 20px;
+            z-index: 9998;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: var(--brown-dark);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .cookie-settings-btn:hover { background: var(--brown); }
+        .cookie-settings-btn.visible { display: flex; }
+
+        /* ======================================
+           FOOTER
+           ====================================== */
+        .site-footer {
+            background: var(--brown-dark);
+            color: var(--cream);
+            padding: 60px 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+        }
+        .footer-brand .logo { font-size: 1.5rem; margin-bottom: 12px; }
+        .footer-desc {
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            opacity: 0.7;
+            line-height: 1.7;
+        }
+        .footer-heading {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a {
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover { opacity: 1; color: var(--gold); }
+
+        .footer-bottom {
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .footer-copy {
+            font-size: 0.8rem;
+            color: var(--gold-light);
+            opacity: 0.5;
+        }
+        .footer-forged {
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(201, 169, 110, 0.35);
+        }
+        .footer-forged a {
+            color: rgba(201, 169, 110, 0.5);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-forged a:hover { color: var(--gold); }
+
+        /* ======================================
+           SCROLL TO TOP
+           ====================================== */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px; right: 20px;
+            width: 44px; height: 44px;
+            background: var(--brown-dark);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            transition: 0.3s;
+        }
+        .scroll-top.visible { display: flex; }
+        .scroll-top:hover { background: var(--brown); }
+
+        /* ======================================
+           SPA PAGES
+           ====================================== */
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ======================================
+           GALLERY SECTION
+           ====================================== */
+        .gallery-section { background: var(--cream); }
+        .gallery-header { text-align: center; margin-bottom: 60px; }
+        .gallery-header .section-divider { margin: 0 auto 24px; }
+        .gallery-header .section-text { margin: 0 auto; }
+
+        .gallery-more {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .gallery-thumb {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .gallery-thumb:hover {
+            border-color: var(--gold);
+            transform: scale(1.02);
+        }
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        .gallery-thumb:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.92);
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            user-select: none;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px; right: 24px;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10001;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+        .lightbox-close:hover { color: var(--cream); }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(59, 31, 11, 0.7);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 1.5rem;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 10001;
+        }
+        .lightbox-nav:hover {
+            background: rgba(59, 31, 11, 0.95);
+        }
+        .lightbox-prev { left: 16px; }
+        .lightbox-next { right: 16px; }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold-light);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            opacity: 0.7;
+        }
+
+        /* ======================================
+           FULL GALLERY PAGE (SPA)
+           ====================================== */
+        .gallery-page {
+            padding-top: 72px;
+        }
+        .gallery-page-header {
+            background: var(--brown-dark);
+            padding: 60px 0;
+            text-align: center;
+        }
+        .gallery-page-header .section-label { color: var(--gold-light); }
+        .gallery-page-header .section-title { color: var(--cream); }
+        .gallery-page-header .section-divider { margin: 0 auto 24px; }
+        .gallery-page-header .section-text { color: var(--gold-light); opacity: 0.8; margin: 0 auto; }
+
+        .gallery-page-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 32px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .gallery-page-back:hover { color: var(--gold-light); }
+
+        .gallery-page-body {
+            padding: 60px 0 80px;
+        }
+
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+        .gallery-filter-btn {
+            padding: 10px 24px;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: 1px solid var(--cream-dark);
+            background: transparent;
+            color: var(--text-muted);
+            transition: all 0.3s;
+        }
+        .gallery-filter-btn:hover,
+        .gallery-filter-btn.active {
+            border-color: var(--gold);
+            color: var(--brown-dark);
+            background: var(--cream);
+        }
+
+        .gallery-full-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 14px;
+        }
+        .gallery-full-grid .gallery-thumb {
+            aspect-ratio: 1/1;
+        }
+
+        .gallery-ig-link {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--cream-dark);
+        }
+        .gallery-ig-link a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--brown);
+            transition: color 0.3s;
+        }
+        .gallery-ig-link a:hover { color: var(--gold); }
+        .gallery-ig-link .ig-icon {
+            width: 20px; height: 20px;
+            display: inline-block;
+        }
+
+        /* ======================================
+           MENU FULL PAGE (SPA)
+           ====================================== */
+        .menu-page {
+            padding-top: 72px;
+        }
+        .menu-page-header {
+            background: var(--brown-dark);
+            padding: 60px 0;
+            text-align: center;
+        }
+        .menu-page-header .section-label { color: var(--gold-light); }
+        .menu-page-header .section-title { color: var(--cream); }
+        .menu-page-header .section-divider { margin: 0 auto 24px; }
+        .menu-page-header .section-text { color: var(--gold-light); opacity: 0.8; margin: 0 auto; }
+
+        .menu-page-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 32px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .menu-page-back:hover { color: var(--gold-light); }
+
+        .menu-page-body {
+            padding: 60px 0 80px;
+        }
+
+        .menu-item-with-photo {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--cream-dark);
+            gap: 20px;
+        }
+        .menu-item-with-photo .menu-item-info { flex: 1; }
+        .menu-item-with-photo .menu-item-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 4px;
+            overflow: hidden;
+            flex-shrink: 0;
+            cursor: pointer;
+            border: 1px solid var(--cream-dark);
+            background: var(--cream-dark);
+            transition: border-color 0.3s;
+        }
+        .menu-item-with-photo .menu-item-photo:hover {
+            border-color: var(--gold);
+        }
+        .menu-item-with-photo .menu-item-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .menu-item-with-photo .menu-item-photo img.loaded {
+            opacity: 1;
+        }
+        .menu-item-right {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        /* Menu teaser on main page */
+        .menu-teaser-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        .menu-teaser-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--cream-dark);
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .menu-teaser-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .menu-teaser-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .menu-teaser-card img.loaded {
+            opacity: 1;
+        }
+        .menu-teaser-card-body {
+            padding: 20px;
+            background: var(--white);
+        }
+        .menu-teaser-card-name {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--brown-dark);
+            margin-bottom: 4px;
+        }
+        .menu-teaser-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .menu-teaser-card-price {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--brown);
+            margin-top: 8px;
+        }
+
+        /* ======================================
+           RESPONSIVE
+           ====================================== */
+        @media (max-width: 992px) {
+            .about-grid,
+            .hours-grid,
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+
+            .about-image::after { display: none; }
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px; left: 0; right: 0;
+                background: var(--brown-dark);
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                border-top: 1px solid rgba(201, 169, 110, 0.2);
+            }
+            .nav-links.open { display: flex; }
+            .mobile-toggle { display: block; }
+
+            .spaces-grid { grid-template-columns: 1fr; }
+
+            .footer-grid { grid-template-columns: 1fr; }
+
+            .menu-categories { gap: 8px; }
+            .menu-cat-btn { padding: 8px 16px; font-size: 0.7rem; }
+
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+            .gallery-full-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+            .menu-teaser-grid { grid-template-columns: 1fr; }
+            .menu-item-with-photo .menu-item-photo { width: 60px; height: 60px; }
+            .gallery-filter { gap: 8px; }
+            .gallery-filter-btn { padding: 8px 16px; font-size: 0.7rem; }
+            .lightbox-nav { width: 40px; height: 40px; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================
+         HEADER / NAVIGATION
+         ============================ -->
+    <header class="site-header">
+        <nav class="nav-inner">
+            <a href="#home" class="logo" onclick="showSection('main','home'); return false;">
+                Restauracja Starka
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#o-restauracji" onclick="closeMenu(); showSection('main','o-restauracji'); return false;" data-i18n="nav_about">O restauracji</a></li>
+                <li><a href="#nasze-sale" onclick="closeMenu(); showSection('main','nasze-sale'); return false;" data-i18n="nav_spaces">Nasze Sale</a></li>
+                <li><a href="#menu" onclick="closeMenu(); showSection('menu-page'); return false;" data-i18n="nav_menu">Menu</a></li>
+                <li><a href="#galeria" onclick="closeMenu(); showSection('main','galeria'); return false;" data-i18n="nav_gallery">Galeria</a></li>
+                <li><a href="#rezerwacja" onclick="closeMenu(); showSection('main','rezerwacja'); return false;" data-i18n="nav_reservation">Rezerwacja</a></li>
+                <li><a href="#kontakt" onclick="closeMenu(); showSection('main','kontakt'); return false;" data-i18n="nav_contact">Kontakt</a></li>
+                <li><a href="https://cyberdemigods.github.io/HotelStarka/" target="_blank" rel="noopener" data-i18n="nav_hotel">Hotel</a></li>
+            </ul>
+            <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- ============================
+         MAIN PAGE
+         ============================ -->
+    <div class="page-section active" id="page-main">
+
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="hero-slider">
+                <div class="hero-slide active" style="background-image: url('img/taras.webp')"></div>
+                <div class="hero-slide" style="background-image: url('img/sala-bankietowa.webp')"></div>
+                <div class="hero-slide" style="background-image: url('img/budynek.webp')"></div>
+                <div class="hero-slide" style="background-image: url('img/piwo.webp')"></div>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <p class="hero-subtitle" data-i18n="hero_subtitle">Opole &middot; Ostr&#243;wek 19 &middot; od 1999</p>
+                <h1 class="hero-title" data-i18n="hero_title">Rodzinna tradycja<br>nad Odr&#261;</h1>
+                <div class="hero-divider"></div>
+                <p class="hero-desc" data-i18n="hero_desc">Zapraszamy do rodzinnej restauracji w zabytkowej kamienicy nad malowniczym rozwidleniem Odry, zaledwie 250 metr&#243;w od Rynku w Opolu.</p>
+                <a href="#menu" class="btn" onclick="showSection('menu-page'); return false;" data-i18n="hero_btn">Zobacz menu</a>
+            </div>
+            <a href="#o-restauracji" class="hero-scroll-hint" aria-label="Scroll down">
+                <span class="hero-scroll-line"></span>
+            </a>
+        </section>
+
+        <!-- O RESTAURACJI -->
+        <section class="about" id="o-restauracji">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image fade-in">
+                        <img src="img/budynek.webp" alt="Restauracja Starka - zabytkowa kamienica nad Odr&#261;">
+                    </div>
+                    <div class="fade-in">
+                        <p class="section-label" data-i18n="about_label">O restauracji</p>
+                        <h2 class="section-title" data-i18n="about_title">Od 1999 roku nad Odr&#261;</h2>
+                        <div class="section-divider"></div>
+                        <p class="section-text" data-i18n="about_text1">
+                            Restauracja Starka to miejsce z dusz&#261;, po&#322;o&#380;one w zabytkowej kamienicy nad Odr&#261;, oko&#322;o 250 metr&#243;w od opolskiego Rynku. Od 1999 roku serwujemy dania kuchni polskiej i europejskiej w niepowtarzalnym, klimatycznym wn&#281;trzu.
+                        </p>
+                        <br>
+                        <p class="section-text" data-i18n="about_text2">
+                            Nazwa "Starka" pochodzi z gwary &#347;l&#261;skiej i oznacza babci&#281;. To w&#322;a&#347;nie domowa, rodzinna atmosfera i tradycyjne warto&#347;ci s&#261; fundamentem naszej restauracji. Zapraszamy na kulinarн&#261; podr&#243;&#380; pe&#322;n&#261; smak&#243;w.
+                        </p>
+                        <div class="about-features">
+                            <div class="feature">
+                                <div class="feature-title" data-i18n="about_feat1_title">Od 1999</div>
+                                <div class="feature-desc" data-i18n="about_feat1_desc">Rodzinna tradycja</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-title" data-i18n="about_feat2_title">3 sale</div>
+                                <div class="feature-desc" data-i18n="about_feat2_desc">Oraz taras nad Odr&#261;</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-title" data-i18n="about_feat3_title">Nad Odr&#261;</div>
+                                <div class="feature-desc" data-i18n="about_feat3_desc">250 m od Rynku</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-title" data-i18n="about_feat4_title">Imprezy</div>
+                                <div class="feature-desc" data-i18n="about_feat4_desc">Sala bankietowa</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WNETRZA / SALE -->
+        <section class="spaces" id="nasze-sale">
+            <div class="container">
+                <div class="spaces-header">
+                    <p class="section-label" data-i18n="spaces_label">Wn&#281;trza</p>
+                    <h2 class="section-title" data-i18n="spaces_title">Trzy niepowtarzalne przestrzenie</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-text" data-i18n="spaces_text">Ka&#380;da z naszych sal posiada w&#322;asny, wyj&#261;tkowy charakter. Wybierz przestrze&#324;, kt&#243;ra najlepiej odpowiada Twoim oczekiwaniom.</p>
+                </div>
+                <div class="spaces-grid">
+
+                    <div class="space-card fade-in">
+                        <div class="space-card-img">
+                            <img src="img/piwo.webp" alt="Sala Pierwsza - styl bawarski">
+                            <div class="space-card-badge" data-i18n="space_capacity">do 40 os&#243;b</div>
+                        </div>
+                        <div class="space-card-body">
+                            <h3 class="space-card-name" data-i18n="space1_name">Sala Pierwsza</h3>
+                            <p class="space-card-meta" data-i18n="space1_meta">9 stolik&#243;w + 6 miejsc przy barze</p>
+                            <p class="space-card-desc" data-i18n="space1_desc">Wn&#281;trze w bawarskim stylu wiejskim z ciemnymi drewnianymi sto&#322;ami, &#322;awami i zabytkowymi meblami. Przytulna atmosfera starej alpejskiej chaty.</p>
+                            <div class="space-card-amenities">
+                                <span class="amenity-tag" data-i18n="amenity_ac">Klimatyzacja</span>
+                                <span class="amenity-tag" data-i18n="amenity_bar">Bar</span>
+                                <span class="amenity-tag" data-i18n="amenity_intimate">Kameralna</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-card fade-in">
+                        <div class="space-card-img">
+                            <img src="img/sala-bankietowa.webp" alt="Sala Bankietowa">
+                            <div class="space-card-badge" data-i18n="space2_capacity">do 30 os&#243;b</div>
+                        </div>
+                        <div class="space-card-body">
+                            <h3 class="space-card-name" data-i18n="space2_name">Sala Bankietowa</h3>
+                            <p class="space-card-meta" data-i18n="space2_meta">Styl lat 20. i 30. XX wieku</p>
+                            <p class="space-card-desc" data-i18n="space2_desc">Elegancka sala utrzymana w stylu starego babcinego pokoju z dwudziestolecia mi&#281;dzywojennego. Bia&#322;e obrusy, rodzinne fotografie i ciep&#322;a, nostalgiczna atmosfera.</p>
+                            <div class="space-card-amenities">
+                                <span class="amenity-tag" data-i18n="amenity_ac">Klimatyzacja</span>
+                                <span class="amenity-tag" data-i18n="amenity_banquet">Bankiety</span>
+                                <span class="amenity-tag" data-i18n="amenity_elegant">Elegancka</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-card fade-in">
+                        <div class="space-card-img">
+                            <img src="img/taras.webp" alt="Taras nad Odr&#261;">
+                            <div class="space-card-badge" data-i18n="space3_capacity">ok. 50 os&#243;b</div>
+                        </div>
+                        <div class="space-card-body">
+                            <h3 class="space-card-name" data-i18n="space3_name">Taras nad Odr&#261;</h3>
+                            <p class="space-card-meta" data-i18n="space3_meta">Ca&#322;oroczny, przeszklony &middot; od 2011</p>
+                            <p class="space-card-desc" data-i18n="space3_desc">Przeszklony taras z widokiem na Odr&#281;, otwarty w 2011 roku. Dost&#281;pny ca&#322;y rok, idealny na romantyczn&#261; kolacj&#281; lub spotkanie przy zachodzie s&#322;o&#324;ca nad rzek&#261;.</p>
+                            <div class="space-card-amenities">
+                                <span class="amenity-tag" data-i18n="amenity_riverview">Widok na Odre</span>
+                                <span class="amenity-tag" data-i18n="amenity_yearround">Calorocznie</span>
+                                <span class="amenity-tag" data-i18n="amenity_romantic">Romantyczny</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- MENU (teaser) -->
+        <section class="menu-section" id="menu">
+            <div class="container">
+                <div class="menu-header">
+                    <p class="section-label" data-i18n="menu_label">Menu</p>
+                    <h2 class="section-title" data-i18n="menu_title">Nasza karta da&#324;</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-text" style="margin: 0 auto 48px;" data-i18n="menu_teaser_text">Kuchnia polska i europejska w naszej interpretacji. Gotujemy ze &#347;wie&#380;ych, lokalnych sk&#322;adnik&#243;w.</p>
+                </div>
+
+                <div class="menu-teaser-grid">
+                    <div class="menu-teaser-card fade-in">
+                        <img src="img/gallery/ig-05.webp" alt="Polski tatar" loading="lazy">
+                        <div class="menu-teaser-card-body">
+                            <div class="menu-teaser-card-name" data-i18n="dish_tatar_name">Polski tatar z pol&#281;dwicy wo&#322;owej</div>
+                            <div class="menu-teaser-card-desc" data-i18n="dish_tatar_desc">tradycyjnie podany z dodatkami</div>
+                            <div class="menu-teaser-card-price">59 z&#322;</div>
+                        </div>
+                    </div>
+                    <div class="menu-teaser-card fade-in">
+                        <img src="img/gallery/ig-06.webp" alt="Kaczka konfitowana" loading="lazy">
+                        <div class="menu-teaser-card-body">
+                            <div class="menu-teaser-card-name" data-i18n="dish_kaczka_name">Kaczka konfitowana</div>
+                            <div class="menu-teaser-card-desc" data-i18n="dish_kaczka_desc">z modr&#261; kapust&#261; i kluskami &#347;l&#261;skimi</div>
+                            <div class="menu-teaser-card-price">79 z&#322;</div>
+                        </div>
+                    </div>
+                    <div class="menu-teaser-card fade-in">
+                        <img src="img/gallery/ig-11.webp" alt="Krewetki tygrysie" loading="lazy">
+                        <div class="menu-teaser-card-body">
+                            <div class="menu-teaser-card-name" data-i18n="dish_krewetki_name">Krewetki tygrysie</div>
+                            <div class="menu-teaser-card-desc" data-i18n="dish_krewetki_desc">na ma&#347;le czosnkowym z grzankami</div>
+                            <div class="menu-teaser-card-price">55 z&#322;</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <a href="#" class="btn" onclick="showSection('menu-page'); return false;" data-i18n="menu_show_full">Zobacz pe&#322;ne menu</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERIA (preview) -->
+        <section class="gallery-section" id="galeria">
+            <div class="container">
+                <div class="gallery-header">
+                    <p class="section-label" data-i18n="gallery_label">Galeria</p>
+                    <h2 class="section-title" data-i18n="gallery_title">Atmosfera Starki</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-text" data-i18n="gallery_text">Zabytkowe wn&#281;trza, widok na Odr&#281; i smaki tradycyjnej kuchni - poznaj klimat naszej restauracji.</p>
+                </div>
+                <div class="gallery-grid" id="galleryPreview">
+                    <!-- Filled by JS - first 6 images -->
+                </div>
+                <div class="gallery-more">
+                    <a href="#" class="btn" onclick="showSection('gallery'); return false;" data-i18n="gallery_show_more">Zobacz ca&#322;&#261; galeri&#281;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- GODZINY OTWARCIA + REZERWACJA -->
+        <section class="hours-section" id="godziny">
+            <div class="container">
+                <div style="text-align: center;">
+                    <p class="section-label" data-i18n="hours_label">Godziny otwarcia</p>
+                    <h2 class="section-title" style="color: var(--cream);" data-i18n="hours_title">Odwied&#378; nas</h2>
+                    <div class="section-divider" style="margin: 0 auto 48px;"></div>
+                </div>
+                <div class="hours-grid">
+                    <div>
+                        <table class="hours-table">
+                            <tr>
+                                <td data-i18n="hours_mon">Poniedzia&#322;ek</td>
+                                <td>16:00 - 22:00</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="hours_tue_fri">Wtorek - Pi&#261;tek</td>
+                                <td>14:30 - 22:00</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="hours_sat">Sobota</td>
+                                <td>13:00 - 22:00</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="hours_sun">Niedziela</td>
+                                <td>12:00 - 20:00</td>
+                            </tr>
+                        </table>
+                        <p class="hours-note" data-i18n="hours_note">Kuchnia przyjmuje zam&#243;wienia do godziny przed zamkni&#281;ciem.</p>
+                    </div>
+                    <div class="hours-image fade-in">
+                        <img src="img/taras.webp" alt="Restauracja Starka - wnetrze">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REZERWACJA -->
+        <section class="reservation" id="rezerwacja">
+            <div class="container">
+                <div class="reservation-inner">
+                    <p class="section-label" data-i18n="res_label">Rezerwacja</p>
+                    <h2 class="section-title" data-i18n="res_title">Zarezerwuj stolik</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-text" style="margin: 0 auto 12px;" data-i18n="res_text">Rezerwacje przyjmujemy wy&#322;&#261;cznie drog&#261; telefoniczn&#261;. Zapraszamy do kontaktu!</p>
+                    <div class="reservation-phone">
+                        <a href="tel:+48774531214">+48 77 453 12 14</a>
+                    </div>
+                    <p class="reservation-note" data-i18n="res_note">Zalecamy rezerwacj&#281; stolika, szczeg&#243;lnie w weekendy i na wieczory. Dla grup powy&#380;ej 10 os&#243;b prosimy o kontakt z co najmniej tygodniowym wyprzedzeniem.</p>
+                    <a href="tel:+48774531214" class="btn" data-i18n="res_call">Zadzwo&#324; teraz</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- KONTAKT -->
+        <section class="contact" id="kontakt">
+            <div class="container">
+                <div class="contact-grid">
+                    <div>
+                        <p class="section-label" data-i18n="contact_label">Kontakt</p>
+                        <h2 class="section-title" data-i18n="contact_title">Znajd&#378; nas</h2>
+                        <div class="section-divider"></div>
+
+                        <div class="contact-item">
+                            <div class="contact-label" data-i18n="contact_address_label">Adres</div>
+                            <div class="contact-value">ul. Ostrowek 19<br>45-088 Opole</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-label" data-i18n="contact_phone_label">Telefon</div>
+                            <div class="contact-value">
+                                <a href="tel:+48774531214">+48 77 453 12 14</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-label" data-i18n="contact_email_label">E-mail</div>
+                            <div class="contact-value">
+                                <a href="mailto:starka@op.pl">starka@op.pl</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-label" data-i18n="contact_company_label">Firma</div>
+                            <div class="contact-value" style="font-size: 0.95rem;">
+                                Restauracja i Hotel Starka<br>K.I.M. Cebula Sp. J.<br>
+                                NIP: 754-30-85-381<br>
+                                REGON: 161609450
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <iframe
+                            class="contact-map"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1267.4!2d17.9185!3d50.6685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47105302257df38b%3A0xcc5adea6f7149cab!2sHotel%20Starka!5e0!3m2!1spl!2spl!4v1"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Mapa - Restauracja Starka, Opole">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div><!-- /page-main -->
+
+    <!-- ============================
+         GALERIA PELNA (SPA)
+         ============================ -->
+    <div class="page-section" id="page-gallery">
+        <div class="gallery-page">
+            <div class="gallery-page-header">
+                <div class="container">
+                    <p class="section-label" data-i18n="gallery_label">Galeria</p>
+                    <h2 class="section-title" data-i18n="gallery_full_title">Galeria Restauracji Starka</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-text" data-i18n="gallery_full_text">Zabytkowe wn&#281;trza, taras nad Odr&#261;, klimat i smaki - zobacz nasz &#347;wiat.</p>
+                </div>
+            </div>
+            <div class="gallery-page-body">
+                <div class="container">
+                    <a class="gallery-page-back" onclick="showSection('main','galeria'); return false;" data-i18n="gallery_back">&#8592; Powr&#243;t do strony g&#322;&#243;wnej</a>
+
+                    <div class="gallery-filter">
+                        <button class="gallery-filter-btn active" onclick="filterGallery('all')" data-i18n="gallery_filter_all">Wszystkie</button>
+                        <button class="gallery-filter-btn" onclick="filterGallery('wnetrza')" data-i18n="gallery_filter_interiors">Wn&#281;trza</button>
+                        <button class="gallery-filter-btn" onclick="filterGallery('dania')" data-i18n="gallery_filter_dishes">Dania</button>
+                        <button class="gallery-filter-btn" onclick="filterGallery('klimat')" data-i18n="gallery_filter_atmosphere">Klimat</button>
+                    </div>
+
+                    <div class="gallery-full-grid" id="galleryFull">
+                        <!-- Filled by JS -->
+                    </div>
+
+                    <div class="gallery-ig-link">
+                        <a href="https://www.instagram.com/restauracjastarka/" target="_blank" rel="noopener">
+                            <svg class="ig-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                            <span data-i18n="gallery_ig_follow">&#346;led&#378; nas na Instagramie</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /page-gallery -->
+
+    <!-- ============================
+         MENU PELNE (SPA)
+         ============================ -->
+    <div class="page-section" id="page-menu">
+        <div class="menu-page">
+            <div class="menu-page-header">
+                <div class="container">
+                    <p class="section-label" data-i18n="menu_label">Menu</p>
+                    <h2 class="section-title" data-i18n="menu_full_title">Karta Da&#324; Restauracji Starka</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-text" data-i18n="menu_full_text">Kuchnia polska i europejska przygotowana ze &#347;wie&#380;ych, lokalnych sk&#322;adnik&#243;w. Smacznego!</p>
+                </div>
+            </div>
+            <div class="menu-page-body">
+                <div class="container">
+                    <a class="menu-page-back" onclick="showSection('main','menu'); return false;" data-i18n="menu_back">&#8592; Powrot do strony glownej</a>
+
+                    <div class="menu-categories" id="menuPageCategories">
+                        <button class="menu-cat-btn active" onclick="showMenuCategory('cold', this)" data-i18n="menu_cat_cold">Przystawki zimne</button>
+                        <button class="menu-cat-btn" onclick="showMenuCategory('warm', this)" data-i18n="menu_cat_warm">Przystawki ciep&#322;e</button>
+                        <button class="menu-cat-btn" onclick="showMenuCategory('salads', this)" data-i18n="menu_cat_salads">Sa&#322;atki</button>
+                        <button class="menu-cat-btn" onclick="showMenuCategory('soups', this)" data-i18n="menu_cat_soups">Zupy</button>
+                        <button class="menu-cat-btn" onclick="showMenuCategory('mains', this)" data-i18n="menu_cat_mains">Dania g&#322;&#243;wne</button>
+                        <button class="menu-cat-btn" onclick="showMenuCategory('desserts', this)" data-i18n="menu_cat_desserts">Desery</button>
+                    </div>
+
+                    <!-- PRZYSTAWKI ZIMNE -->
+                    <div class="menu-category active" id="menu-cold">
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_smalec_name">Domowy smalec</div>
+                                    <div class="menu-item-desc" data-i18n="dish_smalec_desc">z og&#243;rkiem kiszonym i kromk&#261; chleba</div>
+                                </div>
+                                <div class="menu-item-price">12 z&#322;</div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_sledz_name">&#346;led&#378; Matjas</div>
+                                    <div class="menu-item-desc" data-i18n="dish_sledz_desc">z gratin kartoflanym i sosem chrzanowo-truflowym</div>
+                                </div>
+                                <div class="menu-item-price">49 z&#322;</div>
+                            </div>
+                            <div class="menu-item-with-photo">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_carpaccio_name">Carpaccio z pstr&#261;ga</div>
+                                    <div class="menu-item-desc" data-i18n="dish_carpaccio_desc">na sosie winno-musztardowym</div>
+                                </div>
+                                <div class="menu-item-right">
+                                    <div class="menu-item-photo" onclick="openLightbox(0, [{src:'img/gallery/ig-10.webp', alt:'Carpaccio z pstraga'}])">
+                                        <img src="img/gallery/thumb/ig-10.webp" alt="Carpaccio z pstraga" loading="lazy">
+                                    </div>
+                                    <div class="menu-item-price">49 z&#322;</div>
+                                </div>
+                            </div>
+                            <div class="menu-item-with-photo">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_rostbef_name">Plastry rostbefu</div>
+                                    <div class="menu-item-desc" data-i18n="dish_rostbef_desc">z chrzanem i &#380;urawin&#261;</div>
+                                </div>
+                                <div class="menu-item-right">
+                                    <div class="menu-item-photo" onclick="openLightbox(0, [{src:'img/gallery/ig-03.webp', alt:'Plastry rostbefu'}])">
+                                        <img src="img/gallery/thumb/ig-03.webp" alt="Plastry rostbefu" loading="lazy">
+                                    </div>
+                                    <div class="menu-item-price">49 z&#322;</div>
+                                </div>
+                            </div>
+                            <div class="menu-item-with-photo">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_tatar_name">Polski tatar z pol&#281;dwicy wo&#322;owej</div>
+                                    <div class="menu-item-desc" data-i18n="dish_tatar_desc">tradycyjnie podany z dodatkami</div>
+                                </div>
+                                <div class="menu-item-right">
+                                    <div class="menu-item-photo" onclick="openLightbox(0, [{src:'img/gallery/ig-05.webp', alt:'Polski tatar'}, {src:'img/gallery/ig-18.webp', alt:'Tatar wolowy z parmezanem'}])">
+                                        <img src="img/gallery/thumb/ig-05.webp" alt="Polski tatar" loading="lazy">
+                                    </div>
+                                    <div class="menu-item-price">59 z&#322;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PRZYSTAWKI CIEPLE -->
+                    <div class="menu-category" id="menu-warm">
+                        <div class="menu-items">
+                            <div class="menu-item-with-photo">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_krewetki_name">Krewetki tygrysie</div>
+                                    <div class="menu-item-desc" data-i18n="dish_krewetki_desc">na ma&#347;le czosnkowym z grzankami</div>
+                                </div>
+                                <div class="menu-item-right">
+                                    <div class="menu-item-photo" onclick="openLightbox(0, [{src:'img/gallery/ig-11.webp', alt:'Krewetki tygrysie'}])">
+                                        <img src="img/gallery/thumb/ig-11.webp" alt="Krewetki tygrysie" loading="lazy">
+                                    </div>
+                                    <div class="menu-item-price">55 z&#322;</div>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_pieczarki_name">Pieczarki faszerowane</div>
+                                    <div class="menu-item-desc" data-i18n="dish_pieczarki_desc">z serem ple&#347;niowym i orzechami w&#322;oskimi</div>
+                                </div>
+                                <div class="menu-item-price">38 z&#322;</div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_krokiety_name">Krokiety z kapust&#261; i grzybami</div>
+                                    <div class="menu-item-desc" data-i18n="dish_krokiety_desc">podawane z sosem grzybowym</div>
+                                </div>
+                                <div class="menu-item-price">32 z&#322;</div>
+                            </div>
+                            <div class="menu-item-with-photo">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_szparagi_name">Szparagi w szynce parme&#324;skiej</div>
+                                    <div class="menu-item-desc" data-i18n="dish_szparagi_desc">z sosem holenderskim</div>
+                                </div>
+                                <div class="menu-item-right">
+                                    <div class="menu-item-photo" onclick="openLightbox(0, [{src:'img/gallery/ig-20.webp', alt:'Szparagi w szynce'}])">
+                                        <img src="img/gallery/thumb/ig-20.webp" alt="Szparagi w szynce" loading="lazy">
+                                    </div>
+                                    <div class="menu-item-price">48 z&#322;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SALATKI -->
+                    <div class="menu-category" id="menu-salads">
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_salatka_kozim_name">Sa&#322;atka z kozim serem</div>
+                                    <div class="menu-item-desc" data-i18n="dish_salatka_kozim_desc">z gruszk&#261;, orzechami i miodem</div>
+                                </div>
+                                <div class="menu-item-price">42 z&#322;</div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_cezar_name">Sa&#322;atka Cezar</div>
+                                    <div class="menu-item-desc" data-i18n="dish_cezar_desc">z grillowanym kurczakiem i parmezanem</div>
+                                </div>
+                                <div class="menu-item-price">45 z&#322;</div>
+                            </div>
+                            <div class="menu-item-with-photo">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_buraczkowa_name">Sa&#322;atka buraczkowa</div>
+                                    <div class="menu-item-desc" data-i18n="dish_buraczkowa_desc">z fet&#261;, rukol&#261; i pra&#380;onymi pestkami dyni</div>
+                                </div>
+                                <div class="menu-item-right">
+                                    <div class="menu-item-photo" onclick="openLightbox(0, [{src:'img/gallery/ig-01.webp', alt:'Salatka'}])">
+                                        <img src="img/gallery/thumb/ig-01.webp" alt="Salatka" loading="lazy">
+                                    </div>
+                                    <div class="menu-item-price">38 z&#322;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ZUPY -->
+                    <div class="menu-category" id="menu-soups">
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_zurek_name">&#379;urek staropolski</div>
+                                    <div class="menu-item-desc" data-i18n="dish_zurek_desc">z jajkiem i bia&#322;&#261; kie&#322;bas&#261; w chlebie</div>
+                                </div>
+                                <div class="menu-item-price">32 z&#322;</div>
+                            </div>
+                            <div class="menu-item-with-photo">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_krem_name">Krem z borowik&#243;w</div>
+                                    <div class="menu-item-desc" data-i18n="dish_krem_desc">z truflowym olejem i grzankami</div>
+                                </div>
+                                <div class="menu-item-right">
+                                    <div class="menu-item-photo" onclick="openLightbox(0, [{src:'img/gallery/ig-09.webp', alt:'Krem z borowikow'}])">
+                                        <img src="img/gallery/thumb/ig-09.webp" alt="Krem z borowikow" loading="lazy">
+                                    </div>
+                                    <div class="menu-item-price">35 z&#322;</div>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_pomidorowa_name">Pomidorowa babci Starki</div>
+                                    <div class="menu-item-desc" data-i18n="dish_pomidorowa_desc">z domowym makaronem</div>
+                                </div>
+                                <div class="menu-item-price">25 z&#322;</div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_rosol_name">Ros&#243;&#322; z domowym makaronem</div>
+                                    <div class="menu-item-desc" data-i18n="dish_rosol_desc">tradycyjny, jak u babci</div>
+                                </div>
+                                <div class="menu-item-price">22 z&#322;</div>
+                            </div>
+                            <div class="menu-item-with-photo">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_chlodnik_name">Ch&#322;odnik litewski</div>
+                                    <div class="menu-item-desc" data-i18n="dish_chlodnik_desc">z jajkiem i rzodkiewk&#261; (sezonowo)</div>
+                                </div>
+                                <div class="menu-item-right">
+                                    <div class="menu-item-photo" onclick="openLightbox(0, [{src:'img/gallery/ig-17.webp', alt:'Chlodnik litewski'}])">
+                                        <img src="img/gallery/thumb/ig-17.webp" alt="Chlodnik litewski" loading="lazy">
+                                    </div>
+                                    <div class="menu-item-price">28 z&#322;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DANIA GLOWNE -->
+                    <div class="menu-category" id="menu-mains">
+                        <div class="menu-items">
+                            <div class="menu-item-with-photo">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_poledwica_name">Pol&#281;dwica wo&#322;owa</div>
+                                    <div class="menu-item-desc" data-i18n="dish_poledwica_desc">z sosem z zielonego pieprzu, gratin ziemniaczany</div>
+                                </div>
+                                <div class="menu-item-right">
+                                    <div class="menu-item-photo" onclick="openLightbox(0, [{src:'img/gallery/ig-15.webp', alt:'Poledwica wolowa'}, {src:'img/gallery/ig-21.webp', alt:'Stek T-bone'}])">
+                                        <img src="img/gallery/thumb/ig-15.webp" alt="Poledwica wolowa" loading="lazy">
+                                    </div>
+                                    <div class="menu-item-price">95 z&#322;</div>
+                                </div>
+                            </div>
+                            <div class="menu-item-with-photo">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_kaczka_name">Kaczka konfitowana</div>
+                                    <div class="menu-item-desc" data-i18n="dish_kaczka_desc">z modr&#261; kapust&#261; i kluskami &#347;l&#261;skimi</div>
+                                </div>
+                                <div class="menu-item-right">
+                                    <div class="menu-item-photo" onclick="openLightbox(0, [{src:'img/gallery/ig-06.webp', alt:'Kaczka konfitowana'}])">
+                                        <img src="img/gallery/thumb/ig-06.webp" alt="Kaczka konfitowana" loading="lazy">
+                                    </div>
+                                    <div class="menu-item-price">79 z&#322;</div>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_schab_name">Schab pieczony</div>
+                                    <div class="menu-item-desc" data-i18n="dish_schab_desc">ze &#347;liwk&#261; i rozmarynem, puree ziemniaczane</div>
+                                </div>
+                                <div class="menu-item-price">59 z&#322;</div>
+                            </div>
+                            <div class="menu-item-with-photo">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_pstrag_name">Pstr&#261;g &#322;ososiowy</div>
+                                    <div class="menu-item-desc" data-i18n="dish_pstrag_desc">z mas&#322;em cytrynowym i warzywami grillowanymi</div>
+                                </div>
+                                <div class="menu-item-right">
+                                    <div class="menu-item-photo" onclick="openLightbox(0, [{src:'img/gallery/ig-13.webp', alt:'Pstrag lososiowy'}, {src:'img/gallery/ig-14.webp', alt:'Filet rybny'}])">
+                                        <img src="img/gallery/thumb/ig-13.webp" alt="Pstrag lososiowy" loading="lazy">
+                                    </div>
+                                    <div class="menu-item-price">69 z&#322;</div>
+                                </div>
+                            </div>
+                            <div class="menu-item-with-photo">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_pierogi_name">Pierogi Starki</div>
+                                    <div class="menu-item-desc" data-i18n="dish_pierogi_desc">ruskie lub z mi&#281;sem, sma&#380;one na ma&#347;le ze skwarkami</div>
+                                </div>
+                                <div class="menu-item-right">
+                                    <div class="menu-item-photo" onclick="openLightbox(0, [{src:'img/gallery/ig-07.webp', alt:'Pierogi Starki'}, {src:'img/gallery/ig-19.webp', alt:'Pierogi z krewetkami'}])">
+                                        <img src="img/gallery/thumb/ig-07.webp" alt="Pierogi Starki" loading="lazy">
+                                    </div>
+                                    <div class="menu-item-price">39 z&#322;</div>
+                                </div>
+                            </div>
+                            <div class="menu-item-with-photo">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_golonka_name">Golonka pieczona</div>
+                                    <div class="menu-item-desc" data-i18n="dish_golonka_desc">z musztard&#261;, chrzanem i kapust&#261; zasma&#380;an&#261;</div>
+                                </div>
+                                <div class="menu-item-right">
+                                    <div class="menu-item-photo" onclick="openLightbox(0, [{src:'img/gallery/ig-16.webp', alt:'Golonka z puree i szparagami'}])">
+                                        <img src="img/gallery/thumb/ig-16.webp" alt="Golonka" loading="lazy">
+                                    </div>
+                                    <div class="menu-item-price">59 z&#322;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DESERY -->
+                    <div class="menu-category" id="menu-desserts">
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_sernik_name">Sernik babci Starki</div>
+                                    <div class="menu-item-desc" data-i18n="dish_sernik_desc">z sosem malinowym</div>
+                                </div>
+                                <div class="menu-item-price">28 z&#322;</div>
+                            </div>
+                            <div class="menu-item-with-photo">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_szarlotka_name">Szarlotka na ciep&#322;o</div>
+                                    <div class="menu-item-desc" data-i18n="dish_szarlotka_desc">z lodami waniliowymi i karmelem</div>
+                                </div>
+                                <div class="menu-item-right">
+                                    <div class="menu-item-photo" onclick="openLightbox(0, [{src:'img/gallery/ig-12.webp', alt:'Deser truskawkowy'}])">
+                                        <img src="img/gallery/thumb/ig-12.webp" alt="Deser" loading="lazy">
+                                    </div>
+                                    <div class="menu-item-price">30 z&#322;</div>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-info">
+                                    <div class="menu-item-name" data-i18n="dish_creme_name">Cr&#232;me br&#251;l&#233;e</div>
+                                    <div class="menu-item-desc" data-i18n="dish_creme_desc">klasyczne z lask&#261; wanilii</div>
+                                </div>
+                                <div class="menu-item-price">25 z&#322;</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-note" data-i18n="menu_note">
+                        Menu moze ulec zmianie w zaleznosci od sezonowej dostepnosci skladnikow. Informujemy o alergenach na zyczenie. Ceny podane w zlotych polskich (PLN).
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /page-menu -->
+
+    <!-- ============================
+         POLITYKA PRYWATNOSCI (SPA)
+         ============================ -->
+    <div class="page-section" id="page-privacy">
+        <section class="privacy">
+            <div class="container" style="max-width: 800px;">
+                <a href="#home" onclick="showSection('main'); return false;" style="display: inline-block; margin-bottom: 24px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold);" data-i18n="privacy_back">&larr; Powr&#243;t do strony g&#322;&#243;wnej</a>
+
+                <h1 data-i18n="privacy_title">Polityka Prywatno&#347;ci</h1>
+
+                <h2>1. Administrator danych osobowych</h2>
+                <p>Administratorem Pani/Pana danych osobowych jest <strong>Restauracja i Hotel Starka K.I.M. Cebula Spolka Jawna</strong> z siedziba przy ul. Ostrowek 19, 45-088 Opole, NIP: 754-30-85-381, REGON: 161609450 (dalej: "Administrator" lub "Restauracja").</p>
+                <p>Kontakt w sprawach ochrony danych osobowych: <strong>starka@op.pl</strong>, tel. +48 77 453 12 14.</p>
+
+                <h2>2. Cele i podstawy prawne przetwarzania danych</h2>
+                <p>Pani/Pana dane osobowe moga byc przetwarzane w nastepujacych celach:</p>
+                <ul>
+                    <li><strong>Realizacja rezerwacji</strong> - na podstawie art. 6 ust. 1 lit. b RODO (wykonanie umowy lub podjecie dzialan przed jej zawarciem);</li>
+                    <li><strong>Wypelnienie obowiazkow prawnych</strong> (rachunkowosc) - na podstawie art. 6 ust. 1 lit. c RODO;</li>
+                    <li><strong>Dochodzenie lub obrona roszczen</strong> - na podstawie art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes administratora);</li>
+                    <li><strong>Odpowiedz na zapytania</strong> przeslane droga mailowa lub telefoniczna - na podstawie art. 6 ust. 1 lit. f RODO.</li>
+                </ul>
+
+                <h2>3. Kategorie przetwarzanych danych</h2>
+                <p>Przetwarzamy nastepujace kategorie danych osobowych: imie i nazwisko, numer telefonu, adres e-mail, dane dotyczace rezerwacji (data, liczba osob).</p>
+
+                <h2>4. Odbiorcy danych</h2>
+                <p>Pani/Pana dane moga byc udostepniane:</p>
+                <ul>
+                    <li>podmiotom swiadczacym uslugi hostingowe i IT na rzecz Restauracji;</li>
+                    <li>biuru rachunkowemu obslugujacemu Restauracje;</li>
+                    <li>organom panstwowym uprawnionym na podstawie przepisow prawa.</li>
+                </ul>
+
+                <h2>5. Okres przechowywania danych</h2>
+                <p>Dane osobowe beda przechowywane:</p>
+                <ul>
+                    <li>dane rezerwacyjne - przez okres 12 miesiecy od daty wizyty;</li>
+                    <li>dane rachunkowe - przez okres 5 lat od konca roku podatkowego;</li>
+                    <li>dane z zapytan kontaktowych - przez okres 12 miesiecy od udzielenia odpowiedzi.</li>
+                </ul>
+
+                <h2>6. Prawa osob, ktorych dane dotycza</h2>
+                <p>Przysluguja Pani/Panu nastepujace prawa:</p>
+                <ul>
+                    <li><strong>Prawo dostepu</strong> do swoich danych (art. 15 RODO);</li>
+                    <li><strong>Prawo do sprostowania</strong> danych (art. 16 RODO);</li>
+                    <li><strong>Prawo do usuniecia</strong> danych - "prawo do bycia zapomnianym" (art. 17 RODO);</li>
+                    <li><strong>Prawo do ograniczenia przetwarzania</strong> (art. 18 RODO);</li>
+                    <li><strong>Prawo do przenoszenia danych</strong> (art. 20 RODO);</li>
+                    <li><strong>Prawo sprzeciwu</strong> wobec przetwarzania (art. 21 RODO);</li>
+                    <li><strong>Prawo do wniesienia skargi</strong> do Prezesa Urzedu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa, <a href="https://uodo.gov.pl" target="_blank" rel="noopener">uodo.gov.pl</a>).</li>
+                </ul>
+                <p>W celu realizacji powyzszych praw prosimy o kontakt: <strong>starka@op.pl</strong>.</p>
+
+                <h2>7. Przekazywanie danych do panstw trzecich</h2>
+                <p>Dane osobowe nie sa przekazywane do panstw trzecich (poza Europejski Obszar Gospodarczy).</p>
+
+                <h2>8. Polityka plikow cookie</h2>
+
+                <h2>8.1. Czym sa pliki cookie?</h2>
+                <p>Pliki cookie to male pliki tekstowe zapisywane na urzadzeniu uzytkownika podczas odwiedzania strony internetowej. Sluza do zapamietywania preferencji i poprawy jakosci korzystania ze strony.</p>
+
+                <h2>8.2. Rodzaje stosowanych plikow cookie</h2>
+                <ul>
+                    <li><strong>Niezbedne (techniczne)</strong> - wymagane do prawidlowego dzialania strony (np. zapamietywanie preferencji cookies). Podstawa prawna: art. 6 ust. 1 lit. f RODO. Tych plikow nie mozna wylaczyc.</li>
+                    <li><strong>Analityczne</strong> - pomagaja zrozumiec, w jaki sposob uzytkownicy korzystaja ze strony. Instalowane wylacznie po wyrazeniu zgody (art. 6 ust. 1 lit. a RODO).</li>
+                </ul>
+
+                <h2>8.3. Zarzadzanie plikami cookie</h2>
+                <p>Podczas pierwszej wizyty na stronie wyswietlany jest banner z mozliwoscia wyrazenia zgody na poszczegolne kategorie plikow cookie. Zgode mozna w kazdej chwili zmienic lub wycofac, klikajac ikone ustawien cookies (w lewym dolnym rogu strony) lub zmieniajac ustawienia przegladarki internetowej.</p>
+
+                <h2>9. Zautomatyzowane podejmowanie decyzji</h2>
+                <p>Pani/Pana dane osobowe nie beda wykorzystywane do zautomatyzowanego podejmowania decyzji, w tym profilowania.</p>
+
+                <h2>10. Zmiany polityki prywatnosci</h2>
+                <p>Administrator zastrzega sobie prawo do aktualizacji niniejszej polityki prywatnosci. O istotnych zmianach poinformujemy za posrednictwem strony internetowej.</p>
+
+                <p style="margin-top: 32px; font-size: 0.85rem; color: var(--text-muted);"><em>Ostatnia aktualizacja: marzec 2026</em></p>
+            </div>
+        </section>
+    </div><!-- /page-privacy -->
+
+
+    <!-- ============================
+         FOOTER
+         ============================ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">Restauracja Starka</div>
+                    <p class="footer-desc" data-i18n="footer_desc">Rodzinna restauracja w zabytkowej kamienicy nad Odr&#261; w Opolu. Od 1999 roku.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading" data-i18n="footer_nav">Nawigacja</h4>
+                    <ul class="footer-links">
+                        <li><a href="#o-restauracji" onclick="showSection('main','o-restauracji'); return false;" data-i18n="nav_about">O restauracji</a></li>
+                        <li><a href="#nasze-sale" onclick="showSection('main','nasze-sale'); return false;" data-i18n="nav_spaces">Nasze Sale</a></li>
+                        <li><a href="#menu" onclick="showSection('menu-page'); return false;" data-i18n="nav_menu">Menu</a></li>
+                        <li><a href="#galeria" onclick="showSection('main','galeria'); return false;" data-i18n="nav_gallery">Galeria</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading" data-i18n="footer_contact">Kontakt</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+48774531214">+48 77 453 12 14</a></li>
+                        <li><a href="mailto:starka@op.pl">starka@op.pl</a></li>
+                        <li><a href="#kontakt" onclick="showSection('main','kontakt'); return false;">ul. Ostrowek 19, Opole</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading" data-i18n="footer_info">Informacje</h4>
+                    <ul class="footer-links">
+                        <li><a href="#polityka-prywatnosci" onclick="showSection('privacy'); return false;" data-i18n="footer_privacy">Polityka prywatno&#347;ci</a></li>
+                        <li><a href="#polityka-prywatnosci" onclick="showSection('privacy'); return false;" data-i18n="footer_cookies">Polityka cookies</a></li>
+                        <li><a href="https://cyberdemigods.github.io/HotelStarka/" target="_blank" rel="noopener" data-i18n="nav_hotel">Hotel Starka</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy" data-i18n="footer_copyright">&copy; 2026 Restauracja Starka. Wszelkie prawa zastrze&#380;one.</span>
+                <span class="footer-forged">Forged by <a href="https://cyberdemigods.com" target="_blank" rel="noopener">CyberDemigods</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================
+         COOKIE BANNER - RODO OPT-IN
+         ============================ -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-inner">
+            <div class="cookie-title" data-i18n="cookie_title">Szanujemy Twoj&#261; prywatno&#347;&#263;</div>
+            <p class="cookie-text">
+                <span data-i18n="cookie_text">Nasza strona korzysta z plik&#243;w cookie. Pliki niezb&#281;dne s&#261; wymagane do prawid&#322;owego dzia&#322;ania strony. Pozosta&#322;e kategorie mo&#380;esz zaakceptowa&#263; lub odrzuci&#263;.</span>
+                <a href="#polityka-prywatnosci" onclick="showSection('privacy'); return false;" data-i18n="cookie_learn_more">Dowiedz si&#281; wi&#281;cej</a>.
+            </p>
+            <div class="cookie-categories">
+                <label class="cookie-cat">
+                    <input type="checkbox" checked disabled>
+                    <span data-i18n="cookie_necessary">Niezb&#281;dne</span> <span class="required" data-i18n="cookie_required">(wymagane)</span>
+                </label>
+                <label class="cookie-cat">
+                    <input type="checkbox" id="cookieAnalytics">
+                    <span data-i18n="cookie_analytics">Analityczne</span>
+                </label>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptAllCookies()" data-i18n="cookie_accept_all">Akceptuj&#281; wszystkie</button>
+                <button class="cookie-btn cookie-btn-reject" onclick="rejectOptionalCookies()" data-i18n="cookie_reject">Tylko niezb&#281;dne</button>
+                <button class="cookie-btn cookie-btn-settings" onclick="saveSelectedCookies()" data-i18n="cookie_save">Zapisz m&#243;j wyb&#243;r</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie settings button (visible after choice) -->
+    <button class="cookie-settings-btn" id="cookieSettingsBtn" onclick="reopenCookieBanner()" aria-label="Ustawienia cookies" title="Zmien ustawienia cookies">
+        &#9881;
+    </button>
+
+    <!-- Scroll to top -->
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Przewin do gory">&#8593;</button>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)">&#8249;</button>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="Zdjecie galerii">
+        <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)">&#8250;</button>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- ============================
+         JAVASCRIPT
+         ============================ -->
+    <script src="translations.js"></script>
+    <script src="i18n.js"></script>
+    <script>
+        // === HERO SLIDER ===
+        (function() {
+            var slides = document.querySelectorAll('.hero-slide');
+            if (slides.length === 0) return;
+            var current = 0;
+            setInterval(function() {
+                slides[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            }, 5000);
+        })();
+
+        // === MOBILE MENU ===
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+        function closeMenu() {
+            document.getElementById('navLinks').classList.remove('open');
+        }
+
+        // === SPA SECTIONS ===
+        function showSection(section, scrollTo) {
+            document.querySelectorAll('.page-section').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            if (section === 'privacy') {
+                document.getElementById('page-privacy').classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (section === 'gallery') {
+                document.getElementById('page-gallery').classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                renderFullGallery('all');
+                if (typeof setLanguage === 'function' && typeof getCurrentLanguage === 'function') {
+                    setLanguage(getCurrentLanguage());
+                }
+            } else if (section === 'menu-page') {
+                document.getElementById('page-menu').classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (typeof setLanguage === 'function' && typeof getCurrentLanguage === 'function') {
+                    setLanguage(getCurrentLanguage());
+                }
+            } else {
+                document.getElementById('page-main').classList.add('active');
+                if (scrollTo) {
+                    setTimeout(function() {
+                        var target = document.getElementById(scrollTo);
+                        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
+            }
+        }
+
+        // === MENU CATEGORIES ===
+        function showMenuCategory(cat, btn) {
+            document.querySelectorAll('.menu-category').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            document.querySelectorAll('.menu-cat-btn').forEach(function(b) {
+                b.classList.remove('active');
+            });
+            var target = document.getElementById('menu-' + cat);
+            if (target) target.classList.add('active');
+            if (btn) btn.classList.add('active');
+        }
+
+        // === GALLERY DATA ===
+        // Each image: { src, alt, category }
+        // Categories: wnetrza, dania, klimat
+        var galleryData = [
+            { src: 'img/taras.webp', alt: 'Taras nad Odra', cat: 'wnetrza' },
+            { src: 'img/sala-bankietowa.webp', alt: 'Chlodnik litewski z jajkiem', cat: 'dania' },
+            { src: 'img/piwo.webp', alt: 'Golonka jagniecka z puree i szparagami', cat: 'dania' },
+            { src: 'img/budynek.webp', alt: 'Budynek restauracji', cat: 'klimat' },
+            { src: 'img/stoliki.webp', alt: 'Stoliki w restauracji', cat: 'wnetrza' },
+            { src: 'img/zespol.webp', alt: 'Zespol restauracji', cat: 'klimat' },
+            { src: 'img/gallery/ig-01.webp', alt: 'Salatka z wedzonym pstragiem', cat: 'dania' },
+            { src: 'img/gallery/ig-03.webp', alt: 'Plastry rostbefu z sosem koperkowym', cat: 'dania' },
+            { src: 'img/gallery/ig-05.webp', alt: 'Polski tatar z poledwicy wolowej', cat: 'dania' },
+            { src: 'img/gallery/ig-06.webp', alt: 'Kaczka konfitowana z modra kapusta', cat: 'dania' },
+            { src: 'img/gallery/ig-07.webp', alt: 'Pierogi Starki', cat: 'dania' },
+            { src: 'img/gallery/ig-09.webp', alt: 'Krem z borowikow na tarasie', cat: 'dania' },
+            { src: 'img/gallery/ig-10.webp', alt: 'Carpaccio z pstraga', cat: 'dania' },
+            { src: 'img/gallery/ig-11.webp', alt: 'Krewetki tygrysie na masle czosnkowym', cat: 'dania' },
+            { src: 'img/gallery/ig-12.webp', alt: 'Deser truskawkowy', cat: 'dania' },
+            { src: 'img/gallery/ig-13.webp', alt: 'Losos z czarnym makaronem', cat: 'dania' },
+            { src: 'img/gallery/ig-14.webp', alt: 'Filet rybny z ziolami', cat: 'dania' },
+            { src: 'img/gallery/ig-15.webp', alt: 'Steak z brokula tempura', cat: 'dania' },
+            { src: 'img/gallery/ig-16.webp', alt: 'Golonka jagniecka z puree i szparagami', cat: 'dania' },
+            { src: 'img/gallery/ig-17.webp', alt: 'Chlodnik litewski z jajkiem', cat: 'dania' },
+            { src: 'img/gallery/ig-18.webp', alt: 'Tatar wolowy z parmezanem i chipsami', cat: 'dania' },
+            { src: 'img/gallery/ig-19.webp', alt: 'Pierogi z krewetkami w sosie bisque', cat: 'dania' },
+            { src: 'img/gallery/ig-20.webp', alt: 'Szparagi w szynce z hollandaise', cat: 'dania' },
+            { src: 'img/gallery/ig-21.webp', alt: 'Stek T-bone z batatami', cat: 'dania' },
+            { src: 'img/gallery/fb-01.webp', alt: 'Wino Riesling i flammkuchen z widokiem na Odre', cat: 'klimat' },
+            { src: 'img/gallery/fb-02.webp', alt: 'Kawa latte art', cat: 'klimat' },
+            { src: 'img/gallery/fb-03.webp', alt: 'Opole noca - most nad Odra', cat: 'klimat' },
+            { src: 'img/gallery/fb-04.webp', alt: 'Wpis do ksiegi gosci', cat: 'klimat' },
+            { src: 'img/gallery/fb-05.webp', alt: 'Dania na tarasie - flammkuchen i salatki', cat: 'dania' },
+            { src: 'img/gallery/fb-06.webp', alt: 'Szklany taras restauracji', cat: 'wnetrza' }
+        ];
+
+        var GALLERY_PREVIEW_COUNT = 6;
+        var currentLightboxImages = [];
+        var currentLightboxIndex = 0;
+
+        // Render preview gallery on main page (first N images)
+        function renderGalleryPreview() {
+            var container = document.getElementById('galleryPreview');
+            if (!container) return;
+            container.innerHTML = '';
+            var count = Math.min(GALLERY_PREVIEW_COUNT, galleryData.length);
+            for (var i = 0; i < count; i++) {
+                var thumb = createThumb(galleryData[i], i, galleryData.slice(0, count));
+                container.appendChild(thumb);
+            }
+        }
+
+        // Render full gallery page with optional filter
+        function renderFullGallery(filter) {
+            var container = document.getElementById('galleryFull');
+            if (!container) return;
+            container.innerHTML = '';
+
+            var filtered = filter === 'all'
+                ? galleryData
+                : galleryData.filter(function(img) { return img.cat === filter; });
+
+            for (var i = 0; i < filtered.length; i++) {
+                var thumb = createThumb(filtered[i], i, filtered);
+                container.appendChild(thumb);
+            }
+        }
+
+        function createThumb(imgData, index, imageSet) {
+            var div = document.createElement('div');
+            div.className = 'gallery-thumb';
+            div.onclick = (function(idx, set) {
+                return function() { openLightbox(idx, set); };
+            })(index, imageSet);
+
+            var img = document.createElement('img');
+            img.src = imgData.src;
+            img.alt = imgData.alt;
+            img.loading = 'lazy';
+            div.appendChild(img);
+            return div;
+        }
+
+        // Filter gallery
+        function filterGallery(cat) {
+            document.querySelectorAll('.gallery-filter-btn').forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            renderFullGallery(cat);
+        }
+
+        // === LIGHTBOX ===
+        function openLightbox(index, imageSet) {
+            currentLightboxImages = imageSet || galleryData;
+            currentLightboxIndex = index;
+            var img = currentLightboxImages[index];
+            if (!img) return;
+            document.getElementById('lightboxImg').src = img.src;
+            var single = currentLightboxImages.length <= 1;
+            document.getElementById('lightboxCounter').textContent = single ? '' : (index + 1) + ' / ' + currentLightboxImages.length;
+            document.querySelector('.lightbox-prev').style.display = single ? 'none' : 'flex';
+            document.querySelector('.lightbox-next').style.display = single ? 'none' : 'flex';
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function lightboxNav(dir) {
+            var imgs = currentLightboxImages;
+            if (!imgs || !imgs.length) return;
+            currentLightboxIndex = (currentLightboxIndex + dir + imgs.length) % imgs.length;
+            document.getElementById('lightboxImg').src = imgs[currentLightboxIndex].src;
+            document.getElementById('lightboxCounter').textContent = (currentLightboxIndex + 1) + ' / ' + imgs.length;
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') lightboxNav(-1);
+            if (e.key === 'ArrowRight') lightboxNav(1);
+        });
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        // Init preview gallery
+        renderGalleryPreview();
+
+        // Fade-in images on load (prevents flash)
+        function initImageFadeIn() {
+            document.querySelectorAll('.menu-item-photo img, .menu-teaser-card img').forEach(function(img) {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.onload = function() { this.classList.add('loaded'); };
+                }
+            });
+        }
+        initImageFadeIn();
+
+        // === SCROLL TO TOP ===
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('scrollTop');
+            if (window.scrollY > 600) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        // === FADE IN ANIMATION ===
+        (function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(function(el) {
+                observer.observe(el);
+            });
+        })();
+
+        // === COOKIE CONSENT (OPT-IN, RODO-COMPLIANT) ===
+        function getCookieConsent() {
+            try {
+                return JSON.parse(localStorage.getItem('cookie_consent_restaurant'));
+            } catch(e) {
+                return null;
+            }
+        }
+
+        function setCookieConsent(prefs) {
+            localStorage.setItem('cookie_consent_restaurant', JSON.stringify(prefs));
+            document.getElementById('cookieBanner').classList.remove('visible');
+            document.getElementById('cookieSettingsBtn').classList.add('visible');
+            applyCookiePreferences(prefs);
+        }
+
+        function applyCookiePreferences(prefs) {
+            if (prefs && prefs.analytics) {
+                // Placeholder: load analytics scripts here
+            }
+        }
+
+        function acceptAllCookies() {
+            setCookieConsent({ necessary: true, analytics: true, timestamp: new Date().toISOString() });
+        }
+
+        function rejectOptionalCookies() {
+            setCookieConsent({ necessary: true, analytics: false, timestamp: new Date().toISOString() });
+        }
+
+        function saveSelectedCookies() {
+            var analytics = document.getElementById('cookieAnalytics').checked;
+            setCookieConsent({ necessary: true, analytics: analytics, timestamp: new Date().toISOString() });
+        }
+
+        function reopenCookieBanner() {
+            document.getElementById('cookieBanner').classList.add('visible');
+            document.getElementById('cookieSettingsBtn').classList.remove('visible');
+            var consent = getCookieConsent();
+            if (consent) {
+                document.getElementById('cookieAnalytics').checked = consent.analytics;
+            }
+        }
+
+        // Init cookie banner
+        (function() {
+            var consent = getCookieConsent();
+            if (!consent) {
+                document.getElementById('cookieBanner').classList.add('visible');
+            } else {
+                document.getElementById('cookieSettingsBtn').classList.add('visible');
+                applyCookiePreferences(consent);
+            }
+        })();
+
+        // === SMOOTH SCROLL FOR ANCHOR LINKS ===
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                var href = this.getAttribute('href');
+                if (href === '#polityka-prywatnosci') return;
+                if (href === '#home') {
+                    showSection('main');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    e.preventDefault();
+                    return;
+                }
+                var target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

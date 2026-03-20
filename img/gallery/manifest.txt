@@ -1,0 +1,27 @@
+# Instagram Gallery - Restauracja Starka (@restauracjastarka)
+# Downloaded: 18 | Failed: 4 (posts removed/broken) | Total: 22
+# Format: filename | original_url | caption | category
+#================================================================================
+
+ig-01.webp | https://www.instagram.com/restauracjastarka/p/DWCG3cwDCge/ | Smoked trout salad, which we smoke ourselves on-site. Something light today... and instantly the day becomes better | dania
+ig-02.webp | FAILED - post unavailable/removed | https://www.instagram.com/restauracjastarka/p/DJi8Wk8i3MS/ | n/a
+ig-03.webp | https://www.instagram.com/restauracjastarka/p/DIgjocvCuwj/ | (no caption extracted) | dania
+ig-04.webp | FAILED - post unavailable/removed | https://www.instagram.com/restauracjastarka/p/DH-Y4t6CgnR/ | n/a
+ig-05.webp | https://www.instagram.com/restauracjastarka/p/DIJwqXVCr3g/ | (no caption extracted) | dania
+ig-06.webp | https://www.instagram.com/restauracjastarka/p/DHwDn9MCFuP/ | (no caption extracted) | dania
+ig-07.webp | https://www.instagram.com/restauracjastarka/p/DHtjcbVic8_/ | (no caption extracted) | dania
+ig-08.webp | FAILED - post unavailable/removed | https://www.instagram.com/restauracjastarka/p/DHY792uCBsm/ | n/a
+ig-09.webp | https://www.instagram.com/restauracjastarka/p/DHOIIPmivib/ | This weekend features pork tenderloin in chanterelle sauce, creamed leek soup with Brie cheese, and other surprises | dania
+ig-10.webp | https://www.instagram.com/restauracjastarka/p/C_SzGpci8u_/ | (no caption extracted) | dania
+ig-11.webp | https://www.instagram.com/restauracjastarka/p/C7WZIX4K1Sf/ | (no caption extracted) | dania
+ig-12.webp | https://www.instagram.com/restauracjastarka/p/C6n_VxzN3vQ/ | (no caption extracted) | dania
+ig-13.webp | https://www.instagram.com/restauracjastarka/p/C6LxsLIKcF-/ | (no caption extracted) | dania
+ig-14.webp | https://www.instagram.com/restauracjastarka/p/C6GZeOsK7Nw/ | (no caption extracted) | dania
+ig-15.webp | https://www.instagram.com/restauracjastarka/p/C58QPhCqzWN/ | (no caption extracted) | dania
+ig-16.webp | https://www.instagram.com/restauracjastarka/p/CeoIJhkKS0t/ | (no caption extracted) | klimat
+ig-17.webp | https://www.instagram.com/restauracjastarka/p/CeyiDYPKwuD/ | (no caption extracted) | klimat
+ig-18.webp | https://www.instagram.com/restauracjastarka/p/Cfl7HQ0KoVz/ | (no caption extracted) | klimat
+ig-19.webp | https://www.instagram.com/restauracjastarka/p/CfwNOKXK5_z/ | (no caption extracted) | klimat
+ig-20.webp | https://www.instagram.com/restauracjastarka/p/C5ihGKfKUFr/ | (no caption extracted) | dania
+ig-21.webp | https://www.instagram.com/restauracjastarka/p/C53cE33qlMs/ | (no caption extracted) | dania
+ig-22.webp | FAILED - post unavailable/removed | https://www.instagram.com/restauracjastarka/p/CegRaOGqyVG/ | n/a
