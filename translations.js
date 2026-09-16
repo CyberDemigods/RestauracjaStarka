@@ -14,6 +14,7 @@ var translations = {
     nav_spaces: 'Nasze Sale',
     nav_menu: 'Menu',
     nav_gallery: 'Galeria',
+    nav_blog: 'Blog',
     nav_reservation: 'Rezerwacja',
     nav_contact: 'Kontakt',
     nav_hotel: 'Hotel',
@@ -205,6 +206,7 @@ var translations = {
     nav_spaces: 'Interiors',
     nav_menu: 'Menu',
     nav_gallery: 'Gallery',
+    nav_blog: 'Blog',
     nav_reservation: 'Reservation',
     nav_contact: 'Contact',
     nav_hotel: 'Hotel',
@@ -384,6 +386,7 @@ var translations = {
     nav_spaces: 'R\u00e4ume',
     nav_menu: 'Speisekarte',
     nav_gallery: 'Galerie',
+    nav_blog: 'Blog',
     nav_reservation: 'Reservierung',
     nav_contact: 'Kontakt',
     nav_hotel: 'Hotel',
@@ -563,6 +566,7 @@ var translations = {
     nav_spaces: 'Int\u00e9rieurs',
     nav_menu: 'Menu',
     nav_gallery: 'Galerie',
+    nav_blog: 'Blog',
     nav_reservation: 'R\u00e9servation',
     nav_contact: 'Contact',
     nav_hotel: 'H\u00f4tel',
@@ -737,6 +741,7 @@ var translations = {
   es: {
     page_title: 'Restauracja Starka - Tradici\u00f3n Familiar desde 1999 | Opole',
     nav_about: 'Sobre nosotros', nav_spaces: 'Interiores', nav_menu: 'Men\u00fa', nav_gallery: 'Galer\u00eda',
+    nav_blog: 'Blog',
     nav_reservation: 'Reserva', nav_contact: 'Contacto', nav_hotel: 'Hotel',
     hero_subtitle: 'Opole \u00b7 Ostrowek 19 \u00b7 desde 1999',
     hero_title: 'Tradici\u00f3n familiar<br>junto al Oder',
@@ -842,6 +847,7 @@ var translations = {
   it: {
     page_title: 'Restauracja Starka - Tradizione Familiare dal 1999 | Opole',
     nav_about: 'Chi siamo', nav_spaces: 'Interni', nav_menu: 'Menu', nav_gallery: 'Galleria',
+    nav_blog: 'Blog',
     nav_reservation: 'Prenotazione', nav_contact: 'Contatto', nav_hotel: 'Hotel',
     hero_subtitle: 'Opole \u00b7 Ostrowek 19 \u00b7 dal 1999',
     hero_title: 'Tradizione familiare<br>sull\'Oder',
@@ -947,6 +953,7 @@ var translations = {
   cs: {
     page_title: 'Restauracja Starka - Rodinn\u00e1 Tradice od 1999 | Opole',
     nav_about: 'O n\u00e1s', nav_spaces: 'Interi\u00e9ry', nav_menu: 'Menu', nav_gallery: 'Galerie',
+    nav_blog: 'Blog',
     nav_reservation: 'Rezervace', nav_contact: 'Kontakt', nav_hotel: 'Hotel',
     hero_subtitle: 'Opole \u00b7 Ostrowek 19 \u00b7 od 1999',
     hero_title: 'Rodinn\u00e1 tradice<br>na Od\u0159e',
@@ -1088,6 +1095,7 @@ var translations = {
   ru: {
     page_title: '\u0420\u0435\u0441\u0442\u043e\u0440\u0430\u043d Starka \u2013 \u0421\u0435\u043c\u0435\u0439\u043d\u0430\u044f \u0442\u0440\u0430\u0434\u0438\u0446\u0438\u044f \u0441 1999 | Opole',
     nav_about: '\u041e \u043d\u0430\u0441', nav_spaces: '\u0418\u043d\u0442\u0435\u0440\u044c\u0435\u0440\u044b', nav_menu: '\u041c\u0435\u043d\u044e', nav_gallery: '\u0413\u0430\u043b\u0435\u0440\u0435\u044f',
+    nav_blog: 'Blog',
     nav_reservation: '\u0411\u0440\u043e\u043d\u044c', nav_contact: '\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b', nav_hotel: '\u041e\u0442\u0435\u043b\u044c',
     hero_subtitle: 'Opole \u00b7 Ostrowek 19 \u00b7 \u0441 1999',
     hero_title: '\u0421\u0435\u043c\u0435\u0439\u043d\u0430\u044f \u0442\u0440\u0430\u0434\u0438\u0446\u0438\u044f<br>\u043d\u0430 \u041e\u0434\u0435\u0440\u0435',
@@ -1231,6 +1239,7 @@ var translations = {
   uk: {
     page_title: '\u0420\u0435\u0441\u0442\u043e\u0440\u0430\u043d Starka \u2013 \u0421\u0456\u043c\u0435\u0439\u043d\u0430 \u0442\u0440\u0430\u0434\u0438\u0446\u0456\u044f \u0437 1999 | Opole',
     nav_about: '\u041f\u0440\u043e \u043d\u0430\u0441', nav_spaces: '\u0406\u043d\u0442\u0435\u0440\'\u0454\u0440\u0438', nav_menu: '\u041c\u0435\u043d\u044e', nav_gallery: '\u0413\u0430\u043b\u0435\u0440\u0435\u044f',
+    nav_blog: 'Blog',
     nav_reservation: '\u0420\u0435\u0437\u0435\u0440\u0432\u0430\u0446\u0456\u044f', nav_contact: '\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u0438', nav_hotel: '\u0413\u043e\u0442\u0435\u043b\u044c',
     hero_subtitle: 'Opole \u00b7 Ostrowek 19 \u00b7 \u0437 1999',
     hero_title: '\u0421\u0456\u043c\u0435\u0439\u043d\u0430 \u0442\u0440\u0430\u0434\u0438\u0446\u0456\u044f<br>\u043d\u0430 \u041e\u0434\u0435\u0440\u0456',
@@ -1383,6 +1392,7 @@ var translations = {
   nl: {
     page_title: 'Restauracja Starka - Familietraditie sinds 1999 | Opole',
     nav_about: 'Over ons', nav_spaces: 'Interieurs', nav_menu: 'Menu', nav_gallery: 'Galerij',
+    nav_blog: 'Blog',
     nav_reservation: 'Reservering', nav_contact: 'Contact', nav_hotel: 'Hotel',
     hero_subtitle: 'Opole \u00b7 Ostrowek 19 \u00b7 sinds 1999',
     hero_title: 'Familietraditie<br>aan de Oder',

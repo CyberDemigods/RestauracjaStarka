@@ -1320,6 +1320,7 @@
                 <li><a href="#nasze-sale" onclick="closeMenu(); showSection('main','nasze-sale'); return false;" data-i18n="nav_spaces">Nasze Sale</a></li>
                 <li><a href="#menu" onclick="closeMenu(); showSection('menu-page'); return false;" data-i18n="nav_menu">Menu</a></li>
                 <li><a href="#galeria" onclick="closeMenu(); showSection('main','galeria'); return false;" data-i18n="nav_gallery">Galeria</a></li>
+                <li><a href="blog/index.html" data-i18n="nav_blog">Blog</a></li>
                 <li><a href="#rezerwacja" onclick="closeMenu(); showSection('main','rezerwacja'); return false;" data-i18n="nav_reservation">Rezerwacja</a></li>
                 <li><a href="#kontakt" onclick="closeMenu(); showSection('main','kontakt'); return false;" data-i18n="nav_contact">Kontakt</a></li>
                 <li><a href="https://cyberdemigods.github.io/HotelStarka/" target="_blank" rel="noopener" data-i18n="nav_hotel">Hotel</a></li>
@@ -2098,6 +2099,7 @@
                         <li><a href="#nasze-sale" onclick="showSection('main','nasze-sale'); return false;" data-i18n="nav_spaces">Nasze Sale</a></li>
                         <li><a href="#menu" onclick="showSection('menu-page'); return false;" data-i18n="nav_menu">Menu</a></li>
                         <li><a href="#galeria" onclick="showSection('main','galeria'); return false;" data-i18n="nav_gallery">Galeria</a></li>
+                        <li><a href="blog/index.html" data-i18n="nav_blog">Blog</a></li>
                     </ul>
                 </div>
                 <div>
@@ -2244,6 +2246,8 @@
         // Each image: { src, alt, category }
         // Categories: wnetrza, dania, klimat
         var galleryData = [
+            { src: 'img/gallery/s-kurki-bialowieskie.webp', alt: 'Kurki z Puszczy Bialowieskiej', cat: 'dania' },
+            { src: 'img/gallery/s-schab-cielecy.webp', alt: 'Schab cielecy z koscia z mloda kapusta', cat: 'dania' },
             { src: 'img/taras.webp', alt: 'Taras nad Odra', cat: 'wnetrza' },
             { src: 'img/sala-bankietowa.webp', alt: 'Chlodnik litewski z jajkiem', cat: 'dania' },
             { src: 'img/piwo.webp', alt: 'Golonka jagniecka z puree i szparagami', cat: 'dania' },
@@ -2273,7 +2277,17 @@
             { src: 'img/gallery/fb-03.webp', alt: 'Opole noc&#261; - most nad Odra', cat: 'klimat' },
             { src: 'img/gallery/fb-04.webp', alt: 'Wpis do ksiegi gosci', cat: 'klimat' },
             { src: 'img/gallery/fb-05.webp', alt: 'Dania na tarasie - flammkuchen i salatki', cat: 'dania' },
-            { src: 'img/gallery/fb-06.webp', alt: 'Szklany taras restauracji', cat: 'wnetrza' }
+            { src: 'img/gallery/fb-06.webp', alt: 'Szklany taras restauracji', cat: 'wnetrza' },
+            { src: 'img/gallery/s-miecznik.webp', alt: 'Stek z miecznika w wydaniu srodziemnomorskim', cat: 'dania' },
+            { src: 'img/gallery/s-antrykot-cielecy.webp', alt: 'Antrykot z bialej cieleciny z groszkiem i bobem', cat: 'dania' },
+            { src: 'img/gallery/s-chlodnik.webp', alt: 'Chlodnik z figami', cat: 'dania' },
+            { src: 'img/gallery/s-chlodnik-2.webp', alt: 'Chlodnik - letnia klasyka Starki', cat: 'dania' },
+            { src: 'img/gallery/s-botwinka.webp', alt: 'Botwinka z mlodych burakow', cat: 'dania' },
+            { src: 'img/gallery/s-losos-kurki.webp', alt: 'Losos z kurkami', cat: 'dania' },
+            { src: 'img/gallery/s-knedle-morele.webp', alt: 'Knedle z ciasta serowego z morelami', cat: 'dania' },
+            { src: 'img/gallery/s-rostbef.webp', alt: 'Plastry rostbefu z chrzanem i zurawina', cat: 'dania' },
+            { src: 'img/gallery/s-watrobka.webp', alt: 'Watrobka cieleca po berlinsku', cat: 'dania' },
+            { src: 'img/gallery/s-szparagi.webp', alt: 'Szparagi z szynka', cat: 'dania' }
         ];
 
         var GALLERY_PREVIEW_COUNT = 6;
@@ -2482,6 +2496,17 @@
                 }
             });
         });
+
+        // === DEEP-LINK Z PODSTRON (np. /blog/) ===
+        // Wejscie z hashem otwiera wlasciwa sekcje SPA
+        (function() {
+            var h = (window.location.hash || '').replace('#', '');
+            if (!h) return;
+            if (h === 'menu-page' || h === 'menu') { showSection('menu-page'); }
+            else if (h === 'galeria-full' || h === 'gallery') { showSection('gallery'); }
+            else if (h === 'polityka-prywatnosci') { showSection('privacy'); }
+            else { showSection('main', h); }
+        })();
     </script>
 </body>
 </html>
