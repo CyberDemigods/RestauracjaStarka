@@ -343,7 +343,33 @@ a:hover { color: var(--gold); }
     margin-bottom: 10px;
 }
 .cta-box p { color: var(--gold-light); margin-bottom: 22px; }
-.cta-box .btn { border-color: var(--gold); }
+/* CTA = przycisk wypelniony (mocny kontrast) */
+.cta-box .btn {
+    background: var(--gold);
+    color: var(--brown-dark);
+    border-color: var(--gold);
+    font-weight: 600;
+}
+.cta-box .btn:hover {
+    background: var(--gold-light);
+    color: var(--brown-dark);
+    border-color: var(--gold-light);
+}
+
+/* Powrot (strzalka wstecz) na gorze strony */
+.back-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0 4px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--brown-medium);
+}
+.back-top:hover { color: var(--gold); }
+.back-top .arrow { font-size: 1rem; line-height: 1; }
 
 /* Back link */
 .article-back {
